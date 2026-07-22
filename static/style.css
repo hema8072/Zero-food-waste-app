@@ -1,0 +1,169 @@
+body {
+    font-family: Arial;
+    background: linear-gradient(to right, #74ebd5, #9face6);
+    margin: 0;
+}
+
+/* Top bar */
+.top-bar {
+    background: #333;
+    padding: 10px;
+    text-align: right;
+}
+
+.top-bar a {
+    color: white;
+    margin: 10px;
+    text-decoration: none;
+}
+
+/* Form box */
+.form-container {
+    width: 350px;
+    margin: 80px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px gray;
+    text-align: center;
+}
+
+/* Inputs */
+input, select {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+/* Role section */
+.role-section {
+    text-align: left;
+    margin-top: 10px;
+}
+
+.role-section p {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* 🔥 PERFECT SPACING FIX */
+.role-row {
+    display: flex;
+    gap: 20px;   /* controls space between Donor & Receiver */
+    margin-top: 5px;
+}
+
+.role-row label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 15px;
+}
+
+input[type="radio"] {
+    transform: scale(1.1);
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 10px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #45a049;
+}
+
+/* Messages */
+.error {
+    color: red;
+}
+
+.success {
+    color: green;
+    margin-top: 10px;
+}
+
+.link-text {
+    margin-top: 15px;
+}
+/* Admin Dashboard */
+
+.dashboard-container {
+
+    width:90%;
+    margin:40px auto;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+
+}
+
+
+
+table {
+
+    width:100%;
+    border-collapse:collapse;
+    margin-bottom:30px;
+
+}
+
+
+
+th {
+
+    background:#4CAF50;
+    color:white;
+    padding:12px;
+
+}
+
+
+
+td {
+
+    padding:10px;
+    border-bottom:1px solid #ddd;
+
+}
+
+
+
+tr:hover {
+
+    background:#f5f5f5;
+
+}
+
+.food-card {
+
+    width: 300px;
+
+    padding: 20px;
+
+    margin: 20px auto;
+
+    border-radius: 10px;
+
+    box-shadow: 0 0 10px gray;
+
+    text-align: center;
+
+}
+
+
+.food-card img {
+
+    border-radius: 10px;
+
+    object-fit: cover;
+
+}

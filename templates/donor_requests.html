@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Food Requests</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<div class="form-container">
+
+
+<h2>
+Food Requests
+</h2>
+
+
+
+{% if requests %}
+
+
+{% for r in requests %}
+
+
+<div class="food-card">
+
+
+<h3>
+Food: {{r['food_name']}}
+</h3>
+
+
+<p>
+Request ID: {{r['id']}}
+</p>
+
+
+<p>
+Receiver Email: {{r['receiver_email']}}
+</p>
+
+
+<p>
+Status: {{r['status']}}
+</p>
+
+
+
+{% if r['status'] == 'Pending' %}
+
+
+<form action="/update_request" method="POST">
+
+
+<input type="hidden"
+name="request_id"
+value="{{r['id']}}">
+
+
+
+<button name="action" value="Accepted">
+Accept
+</button>
+
+
+
+<button name="action" value="Rejected">
+Reject
+</button>
+
+
+</form>
+
+
+{% else %}
+
+
+<p>
+Request Completed
+</p>
+
+
+{% endif %}
+
+
+
+</div>
+
+
+<hr>
+
+
+{% endfor %}
+
+
+
+{% else %}
+
+
+<p>
+No requests yet.
+</p>
+
+
+{% endif %}
+
+
+
+<br>
+
+
+<a href="/donor">
+Back to Dashboard
+</a>
+
+
+</div>
+
+
+</body>
+
+</html>

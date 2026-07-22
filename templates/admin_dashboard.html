@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Admin Dashboard</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<div class="form-container">
+    {% with messages = get_flashed_messages() %}
+
+    {% if messages %}
+
+    {% for msg in messages %}
+
+    <p style="color:green;">
+    {{msg}}
+    </p>
+
+    {% endfor %}
+
+    {% endif %}
+
+    {% endwith %}
+
+
+<h2>
+Admin Dashboard
+</h2>
+
+
+
+<!-- Statistics -->
+
+<div class="food-card">
+
+
+<h3>
+Statistics
+</h3>
+
+
+<p>
+Total Users:
+{{user_count}}
+</p>
+
+
+<p>
+Total Food Donations:
+{{food_count}}
+</p>
+
+
+<p>
+Total Food Requests:
+{{request_count}}
+</p>
+
+
+</div>
+
+
+<hr>
+
+
+
+<!-- Users -->
+
+<h3>
+Registered Users
+</h3>
+
+
+{% for u in users %}
+
+
+<div class="food-card">
+
+
+<p>
+Name:
+{{u['name']}}
+</p>
+
+
+<p>
+Email:
+{{u['email']}}
+</p>
+
+
+<p>
+Role:
+{{u['role']}}
+</p>
+
+
+
+<a href="/delete_user/{{u['id']}}">
+Delete User
+</a>
+
+
+</div>
+
+
+<hr>
+
+
+{% endfor %}
+
+
+
+
+
+<!-- Food Donations -->
+
+
+<h3>
+Food Donations
+</h3>
+
+
+
+{% for f in foods %}
+
+
+
+<div class="food-card">
+
+
+<p>
+Food:
+{{f['food_name']}}
+</p>
+
+
+<p>
+Donor:
+{{f['donor_email']}}
+</p>
+
+
+<p>
+Quantity:
+{{f['quantity']}}
+</p>
+
+
+<p>
+Status:
+{{f['status']}}
+</p>
+
+
+
+<a href="/delete_food/{{f['id']}}">
+Delete Food
+</a>
+
+
+</div>
+
+
+<hr>
+
+
+{% endfor %}
+
+
+
+
+
+<!-- Requests -->
+
+
+<h3>
+Food Requests
+</h3>
+
+
+
+{% for r in requests %}
+
+
+
+<div class="food-card">
+
+
+<p>
+Receiver:
+{{r['receiver_email']}}
+</p>
+
+
+<p>
+Food ID:
+{{r['food_id']}}
+</p>
+
+
+<p>
+Status:
+{{r['status']}}
+</p>
+
+
+
+<a href="/delete_request/{{r['id']}}">
+Delete Request
+</a>
+
+
+</div>
+
+
+<hr>
+
+
+{% endfor %}
+
+
+
+
+
+<a href="/admin_logout">
+Admin Logout
+</a>
+
+
+
+</div>
+
+
+</body>
+
+</html>

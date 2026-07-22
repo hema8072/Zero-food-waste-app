@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Receiver Dashboard</title>
+
+<link rel="stylesheet" 
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<div class="form-container">
+
+{% with messages = get_flashed_messages() %}
+
+    {% if messages %}
+
+    {% for msg in messages %}
+
+    <p style="color:green;">
+    {{msg}}
+    </p>
+
+    {% endfor %}
+
+    {% endif %}
+
+    {% endwith %}
+<h2>
+Welcome {{user['name']}} 👋
+</h2>
+
+
+<h3>
+Available Food Donations
+</h3>
+
+
+
+{% if foods %}
+
+
+{% for food in foods %}
+
+
+<div class="food-card">
+
+
+<h3>
+{{food['food_name']}}
+</h3>
+
+
+<p>
+Quantity: {{food['quantity']}}
+</p>
+
+
+<p>
+Category: {{food['category']}}
+</p>
+
+
+<p>
+Expiry: {{food['expiry_time']}}
+</p>
+
+
+<p>
+Pickup Address: {{food['address']}}
+</p>
+
+
+<p>
+Contact: {{food['contact']}}
+</p>
+
+
+
+{% if food['image'] %}
+
+<img src="{{ url_for('static', filename='uploads/' + food['image']) }}"
+width="200">
+
+{% endif %}
+
+
+
+<form action="/request_food" method="POST">
+
+
+<input type="hidden"
+name="food_id"
+value="{{food['id']}}">
+
+
+<button type="submit">
+Request Food
+</button>
+
+
+</form>
+
+
+
+</div>
+
+
+<hr>
+
+
+{% endfor %}
+
+
+
+{% else %}
+
+
+<p>
+No food donations available.
+</p>
+
+
+{% endif %}
+
+
+
+<br>
+
+
+<a href="/my_requests">
+My Requests
+</a>
+
+
+<br><br>
+
+
+<a href="/logout">
+Logout
+</a>
+
+
+
+</div>
+
+
+</body>
+
+</html>

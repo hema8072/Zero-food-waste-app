@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>My Food Requests</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<div class="form-container">
+    {% with messages = get_flashed_messages() %}
+
+    {% if messages %}
+
+    {% for msg in messages %}
+
+    <p style="color:green;">
+    {{msg}}
+    </p>
+
+    {% endfor %}
+
+    {% endif %}
+
+    {% endwith %}
+
+
+<h2>
+My Food Requests
+</h2>
+
+
+
+{% if requests %}
+
+
+{% for r in requests %}
+
+
+<div class="food-card">
+
+
+<h3>
+{{r['food_name']}}
+</h3>
+
+
+<p>
+Quantity: {{r['quantity']}}
+</p>
+
+
+<p>
+Pickup Address: {{r['address']}}
+</p>
+
+
+<p>
+Request Status:
+
+{% if r['status']=="Accepted" %}
+
+<b>Accepted ✅</b>
+
+{% elif r['status']=="Rejected" %}
+
+<b>Rejected ❌</b>
+
+{% else %}
+
+<b>Pending ⏳</b>
+
+{% endif %}
+
+</p>
+
+
+</div>
+
+
+<hr>
+
+
+{% endfor %}
+
+
+
+{% else %}
+
+
+<p>
+You have not requested any food.
+</p>
+
+
+{% endif %}
+
+
+
+<br>
+
+
+<a href="/receiver">
+Back to Available Food
+</a>
+
+
+<br><br>
+
+
+<a href="/logout">
+Logout
+</a>
+
+
+</div>
+
+
+</body>
+
+</html>

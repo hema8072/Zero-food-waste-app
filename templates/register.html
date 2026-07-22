@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="top-bar">
+    <a href="/login">Login</a>
+    <a href="/register">Register</a>
+</div>
+
+<div class="form-container">
+
+    <h2>Register</h2>
+
+    <form action="/register" method="POST">
+
+        <input type="text" name="name" placeholder="Enter Name" required>
+
+        <input type="email" name="email" placeholder="Enter Email" required>
+
+        <input type="password" name="password" placeholder="Enter Password" required>
+
+        <select name="role" required>
+            <option value="">--Select Role--</option>
+            <option value="donor">Donor</option>
+            <option value="receiver">Receiver</option>
+        </select>
+
+        <button type="submit">Register</button>
+
+    </form>
+
+    <p class="link-text">
+        Already have account? <a href="/login">Login</a>
+    </p>
+
+    {% if msg %}
+        <p class="success">{{ msg }}</p>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
